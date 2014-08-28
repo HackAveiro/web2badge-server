@@ -6,7 +6,7 @@ Web2Badge is a system that allows an LCD badge to receive messages from the Inte
 
 
 Server
--------
+--------
 
 This repository has the code of the server component of the web2badge project.
 
@@ -16,6 +16,9 @@ The server has the following main functions:
   * Provide a web interface for administration and publishing manual messages
   * Poll external systems (e.g. twitter) for significant messages to be sent
   * Provide a TCP server to which the gateway(s) connect to receive the messages
+
+
+
 
 
 License
