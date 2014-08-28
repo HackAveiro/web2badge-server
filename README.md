@@ -1,13 +1,22 @@
 web2badge-website
 =================
 
-Web2badge is the first project of Aveiro Makers. That will be presented at Mini Maker Faire Lisbon on September 19, 2014.
-Web2badge is a system composed of a physycal badge with an LCD, a gateway that conects a group of badges to the internet and a website that comunicates with the gateway.
+Web2Badge is the first project of Aveiro Makers. It will be presented at Mini Maker Faire Lisbon on September 19, 2014.
+Web2Badge is a system that allows an LCD badge to receive messages from the Internet, through an RF-connected gateway.
 
-Content
+
+Server
 -------
-web2badge-website repository have all info about the website that communicates with the gateway. 
-There are other repositorys with other parts of the system: web2badge-badge; web2badge-gateway.
+
+This repository has the code of the server component of the web2badge project.
+
+The server has the following main functions:
+
+  * Manage the queue of messages to be sent to the devices
+  * Provide a web interface for administration and publishing manual messages
+  * Poll external systems (e.g. twitter) for significant messages to be sent
+  * Provide a TCP server to which the gateway(s) connect to receive the messages
+
 
 License
 -------
