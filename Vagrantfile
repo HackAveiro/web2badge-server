@@ -51,8 +51,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Use Rsync for shared folder
   config.vm.synced_folder ".", shared_folder, type: "rsync",
-     rsync__exclude: [".git/","vendor", "nbproject"]
-
+     rsync__exclude: [".git/", "nbproject"]
 
   # VirtualBox specific configurations
   config.vm.provider :virtualbox do |vb|
@@ -72,15 +71,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   end
 
-
-
   # Provision Base Packages
   config.vm.provision "shell", path: "#{github_url}/scripts/base.sh", args: [github_url, server_swap, server_timezone]
 
   # Provision PHP
-  php_timezone          = "UTC"    # http://php.net/manual/en/timezones.php
+  php_timezone          = "Europe/Lisbon"    # http://php.net/manual/en/timezones.php
   hhvm                  = "false"  #set to true for hhvm-support
   config.vm.provision "shell", path: "#{github_url}/scripts/php.sh", args: [php_timezone, hhvm]
+
+  # Provision SQLlite
+  config.vm.provision "shell", path: "#{github_url}/scripts/sqlite.sh"
 
   # Provision Vim
   config.vm.provision "shell", path: "#{github_url}/scripts/vim.sh", args: github_url
@@ -89,14 +89,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   public_folder         = shared_folder + "/web"
   config.vm.provision "shell", path: "#{github_url}/scripts/apache.sh", args: [server_ip, public_folder, hostname, github_url]
 
-  # Provision Redis (without journaling and persistence)
-  config.vm.provision "shell", path: "#{github_url}/scripts/redis.sh", args: ["persistence"]
-
   # Provision Composer
   composer_packages     = []       # List any global Composer packages that you want to install
   config.vm.provision "shell", path: "#{github_url}/scripts/composer.sh", privileged: false, args: composer_packages
 
-  # Composer Update
-  config.vm.provision "shell", inline: "composer update -d " + shared_folder
+  # Composer install vendor libraries
+  config.vm.provision "shell", inline: "composer install -d " + shared_folder
+
+  # Run the console command that sets up the database schema
+  config.vm.provision "shell", inline: shared_folder + "/bin/web2badge.php setup-database"
 
 end
