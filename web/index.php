@@ -4,6 +4,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 $app = require_once(__DIR__.'/../src/bootstrap.php');
 
+$app['team_members'] = array(
+  '**' => 'everyone',
+  'AF' => 'André Esteves',
+  'DG' => 'Diogo Gomes',
+  'FM' => 'Francisco Mendes',
+  'JS' => 'Joaquim Santos',
+  'LF' => 'Luís Faceira',
+  'MG' => 'Marcos Gomes',
+  'RL' => 'Ricardo Lameiro'
+);
+
 $app->get('', function() use ($app) { 
     return $app['twig']->render('index.html');
 }); 
@@ -26,31 +37,34 @@ $app->get('messages/get_one', function() use ($app) {
 
 $app->post('messages', function(Request $request) use ($app) {
     $now = new \DateTime();
+
+    $deviceID = $request->get('deviceID');
     $newMessageData = array(
-        'deviceID' => $request->get('deviceID'),
+        'deviceID' => $deviceID,
         'text' => $request->get('text'),
         'timestamp' => $now->format('Y-m-d H:i:s')
     );
 
     $app['db']->insert('messages', $newMessageData);
-    return 'OK';
+    
+    $team_members = $app['team_members'];
+
+    return $app['twig']->render('form.html', array(
+        'deviceID' => $deviceID,
+        'target' => $team_members[$deviceID],
+        'sent' => true
+    ));
 });
 
 $app->get('{deviceID}', function($deviceID) use ($app) {
-    if($deviceID == 'all')
-      $deviceID = '**';
     
-    $names = array(
-      '**' => 'everyone',
-      'AF' => 'André Esteves',
-      'DG' => 'Diogo Gomes',
-      'FM' => 'Francisco Mendes',
-      'JS' => 'Joaquim Santos',
-      'LF' => 'Luís Faceira',
-      'MG' => 'Marcos Gomes',
-      'RL' => 'Ricardo Lameiro'
-    );
-    return $app['twig']->render('form.html', ['deviceID' => $deviceID, 'target' => $names[$deviceID]]);
-})->assert('deviceID', '^[a-zA-Z]{2}|all');
+    $team_members = $app['team_members'];
+
+    return $app['twig']->render('form.html', array(
+        'deviceID' => $deviceID,
+        'target' => $team_members[$deviceID],
+        'sent' => false
+    ));
+})->assert('deviceID', '^[a-zA-Z*]{2}|all');
 
 $app->run();
