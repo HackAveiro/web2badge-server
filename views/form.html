@@ -27,12 +27,11 @@
 
             <div>
                 <h1>Web2Badge</h1>
-                <p class="lead">Transmit message to {{ target }}!</p>
+                <p class="lead">Transmit a message to {{ target }}!</p>
             </div>
             <div>
                 <form role="form" action="/messages" method="POST">
                     <div class="form-group">
-                        <label for="text">Message</label>
                         <textarea class="form-control" rows="3" id="text" name="text" placeholder="Text to be sent to the badge"></textarea>
                         <input type="hidden" value="{{ deviceID }}" name="deviceID" />
                     </div>

@@ -29,21 +29,19 @@
                 <h1>Web2Badge Server</h1>
                 <p class="lead">Welcome to Web2Badge Server.</p>
                 <p>To get a message to be transmitted, poll the <code>/messages/get_one</code></p>
-                <p>To submit a new message POST <var>deviceID</var> and <var>text</var> to <code>/messages</code> or use the form below if you're human.</p>
-            </div>
-
-            <div>
-                <form role="form" action="/messages" method="POST">
-                    <div class="form-group">
-                        <label for="deviceID">Target Device ID</label>
-                        <input type="text" class="form-control" id="deviceID" placeholder="deviceID" name="deviceID" />
-                    </div>
-                    <div class="form-group">
-                        <label for="text">Message's text</label>
-                        <textarea class="form-control" rows="3" id="text" name="text" placeholder="Text to be sent"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
+                <p>To submit a new message POST <var>deviceID</var> and <var>text</var> to <code>/messages</code>.</p>
+                <div>If you're a human you can use one of the following forms to send a message to ...
+                    <ul>
+                        <li><a href="all">everyone</a></li>
+                        <li><a href="AF">André Esteves</a></li>
+                        <li><a href="DG">Diogo Gomes</a></li>
+                        <li><a href="FM">Francisco Mendes</a></li>
+                        <li><a href="JS">Joaquim Santos</a></li>
+                        <li><a href="LF">Luis Faceira</a></li>
+                        <li><a href="MG">Marcos Gomes</a></li>
+                        <li><a href="RL">Ricardo Lameiro</a></li>
+                    </ul>
+                </div>
             </div>
 
         </div><!-- /.container -->
