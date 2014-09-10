@@ -32,14 +32,9 @@
                 <p>To submit a new message POST <var>deviceID</var> and <var>text</var> to <code>/messages</code>.</p>
                 <div>If you're a human you can use one of the following forms to send a message to ...
                     <ul>
-                        <li><a href="**">everyone</a></li>
-                        <li><a href="AF">André Esteves</a></li>
-                        <li><a href="DG">Diogo Gomes</a></li>
-                        <li><a href="FM">Francisco Mendes</a></li>
-                        <li><a href="JS">Joaquim Santos</a></li>
-                        <li><a href="LF">Luis Faceira</a></li>
-                        <li><a href="MG">Marcos Gomes</a></li>
-                        <li><a href="RL">Ricardo Lameiro</a></li>
+                        {% for deviceID, name in team_members %}
+                        <li><a href="{{ deviceID }}">{{ name }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

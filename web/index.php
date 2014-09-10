@@ -16,7 +16,9 @@ $app['team_members'] = array(
 );
 
 $app->get('', function() use ($app) { 
-    return $app['twig']->render('index.html');
+    return $app['twig']->render('index.html', array(
+        'team_members' => $app['team_members']
+    ));
 }); 
 
 $app->get('messages/get_one', function() use ($app) {
