@@ -46,10 +46,10 @@ $app->get('{deviceID}', function($deviceID) use ($app) {
       'DG' => 'Diogo Gomes',
       'FM' => 'Francisco Mendes',
       'JS' => 'Joaquim Santos',
+      'LF' => 'Luís Faceira',
       'MG' => 'Marcos Gomes',
-      'RL' => 'Ricardo Lameiro',
-      'LF' => 'Luís Faceira'
-     );
+      'RL' => 'Ricardo Lameiro'
+    );
     return $app['twig']->render('form.html', ['deviceID' => $deviceID, 'target' => $names[$deviceID]]);
 })->assert('deviceID', '^[a-zA-Z]{2}|all');
 
