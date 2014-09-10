@@ -48,24 +48,20 @@ $app->post('messages', function(Request $request) use ($app) {
     );
 
     $app['db']->insert('messages', $newMessageData);
-    
-    $team_members = $app['team_members'];
-
-    return $app['twig']->render('form.html', array(
-        'deviceID' => $deviceID,
-        'target' => $team_members[$deviceID],
-        'sent' => true
-    ));
+    $app['session']->set('message_sent', true);
+    return $app->redirect($deviceID);
 });
 
 $app->get('{deviceID}', function($deviceID) use ($app) {
-    
+    $app['session']->set('my_value', 'teste');
     $team_members = $app['team_members'];
 
+    $sent = $app['session']->get('message_sent');
+    $app['session']->set('message_sent', false);
     return $app['twig']->render('form.html', array(
         'deviceID' => $deviceID,
         'target' => $team_members[$deviceID],
-        'sent' => false
+        'sent' => $sent
     ));
 })->assert('deviceID', '^[a-zA-Z*]{2}|all');
 
