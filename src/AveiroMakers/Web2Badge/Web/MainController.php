@@ -15,8 +15,6 @@ class MainController
     
     public function form(Application $app, $deviceCode)
     {
-        $app['session']->set('my_value', 'teste');
-        
         $device = $app['db']->fetchAssoc('SELECT * FROM devices WHERE code = ?', [$deviceCode]);
 
         if ($device === false)
