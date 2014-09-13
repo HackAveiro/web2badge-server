@@ -15,60 +15,15 @@ $app['team_members'] = array(
   'RL' => 'Ricardo Lameiro'
 );
 
-$app->get('', function() use ($app) { 
-    return $app['twig']->render('index.html', array(
-        'team_members' => $app['team_members']
-    ));
-}); 
+$app->get('', 'AveiroMakers\Web2Badge\Web\MainController::index');
 
-$app->get('messages/get_one', function() use ($app) {
-    $sql = 'SELECT * FROM messages WHERE sent = ? ORDER BY timestamp ASC';
-    $message = $app['db']->fetchAssoc($sql, array(0));
-    if ($message === false)
-    {
-        return "EMPTY";
-    }
-    else
-    {
-        $sql = "UPDATE messages SET sent = ? WHERE id = ?";
-        $app['db']->executeUpdate($sql, array(1, $message['id']));
-    }
-    
-    return $message['deviceID'].$message['text'];
-});
+$app->get('messages/get_one', 'AveiroMakers\Web2Badge\Web\MessagesController::getOneAction');
 
-$app->get('messages', function() use ($app) {
-    $sql = 'SELECT * FROM messages ORDER BY timestamp DESC';
-    $messages = $app['db']->fetchAll($sql);
-    return $app->json($messages);
-});
+$app->get('messages', 'AveiroMakers\Web2Badge\Web\MessagesController::getAll');
 
-$app->post('messages', function(Request $request) use ($app) {
-    $now = new \DateTime();
+$app->post('messages', 'AveiroMakers\Web2Badge\Web\MessagesController::create');
 
-    $deviceID = $request->get('deviceID');
-    $newMessageData = array(
-        'deviceID' => $deviceID,
-        'text' => $request->get('text'),
-        'timestamp' => $now->format('Y-m-d H:i:s')
-    );
-
-    $app['db']->insert('messages', $newMessageData);
-    $app['session']->set('message_sent', true);
-    return $app->redirect($deviceID);
-});
-
-$app->get('{deviceID}', function($deviceID) use ($app) {
-    $app['session']->set('my_value', 'teste');
-    $team_members = $app['team_members'];
-
-    $sent = $app['session']->get('message_sent');
-    $app['session']->set('message_sent', false);
-    return $app['twig']->render('form.html', array(
-        'deviceID' => $deviceID,
-        'target' => $team_members[$deviceID],
-        'sent' => $sent
-    ));
-})->assert('deviceID', '^[a-zA-Z*]{2}|all');
+$app->get('{deviceID}', 'AveiroMakers\Web2Badge\Web\MainController::form')
+    ->assert('deviceID', '^[a-zA-Z*]{2}|all');
 
 $app->run();
