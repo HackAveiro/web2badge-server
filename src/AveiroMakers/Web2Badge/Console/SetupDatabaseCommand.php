@@ -36,13 +36,32 @@ class SetupDatabaseCommand extends \Knp\Command\Command
         $messagesTable->addColumn('text', 'string', array('length' => 140));
         $messagesTable->addColumn('sent', 'boolean', array('default' => false));
         $messagesTable->addColumn('timestamp', 'datetime');
-        $messagesTable->setPrimaryKey(array('id'));
+        $messagesTable->setPrimaryKey(['id']);
 
+        
+        // Prepare the table to store devices
+        $devicesTable = $schema->createTable('devices');
+        $devicesTable->addColumn('id', 'integer', array('unsigned' => true));
+        $devicesTable->addColumn('code', 'string', array('length' => 2));
+        $devicesTable->addColumn('owner', 'string');
+        $devicesTable->addColumn('last_seen_at', 'datetime', array('notnull' => false));
+        $devicesTable->setPrimaryKey(['id']);
+        $devicesTable->addUniqueIndex(['code']);
+        
         $queries = $schema->toSql($db->getDatabasePlatform());
         foreach($queries as $query)
         {
             $db->executeQuery($query);   
         }
         $output->writeLn('Database schema was successfully prepared!');
+        
+        $output->writeLn('Importing devices');
+
+        $devices = include($app['fixtures_dir'].'/devices.php');
+        foreach ($devices as $device) {
+            $db->insert('devices', $device);   
+        }
+
+        $output->writeLn('Devices imported!');
     }
 }

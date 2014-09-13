@@ -9,9 +9,12 @@ $app = new Silex\Application();
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
         'driver'   => 'pdo_sqlite',
-        'path'     => __DIR__.'/../messages.db',
+        'path'     => __DIR__.'/../data/web2badge.db',
     )
 ));
+
+// Define the folder where fixtures are available
+$app['fixtures_dir'] = __DIR__ . '/../data/';
 
 $app->register(new Knp\Provider\ConsoleServiceProvider(), array(
     'console.name' =>"

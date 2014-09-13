@@ -26,4 +26,8 @@ $app->post('messages', 'AveiroMakers\Web2Badge\Web\MessagesController::create');
 $app->get('{deviceID}', 'AveiroMakers\Web2Badge\Web\MainController::form')
     ->assert('deviceID', '^[a-zA-Z*]{2}|all');
 
+$app->post('devices/{deviceCode}/ping', 'AveiroMakers\Web2Badge\Web\DevicesController::ping');
+
+$app->get('devices', 'AveiroMakers\Web2Badge\Web\DevicesController::getAll');
+
 $app->run();
