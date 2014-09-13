@@ -37,6 +37,12 @@ $app->get('messages/get_one', function() use ($app) {
     return $message['deviceID'].$message['text'];
 });
 
+$app->get('messages', function() use ($app) {
+    $sql = 'SELECT * FROM messages ORDER BY timestamp DESC';
+    $messages = $app['db']->fetchAll($sql);
+    return $app->json($messages);
+});
+
 $app->post('messages', function(Request $request) use ($app) {
     $now = new \DateTime();
 
