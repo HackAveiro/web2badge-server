@@ -12,7 +12,15 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 ));
 
 $app->register(new Knp\Provider\ConsoleServiceProvider(), array(
-    'console.name' => 'Web2Badge Command-Line-Interface',
+    'console.name' =>"
+ __          __  _    ___  ____            _            
+ \ \        / / | |  |__ \|  _ \          | |           
+  \ \  /\  / /__| |__   ) | |_) | __ _  __| | __ _  ___ 
+   \ \/  \/ / _ \ '_ \ / /|  _ < / _` |/ _` |/ _` |/ _ \
+    \  /\  /  __/ |_) / /_| |_) | (_| | (_| | (_| |  __/
+     \/  \/ \___|_.__/____|____/ \__,_|\__,_|\__, |\___|
+                                              __/ |     
+                                             |___/      ",
     'console.version' => '0.1.0',
     'console.project_directory' => __DIR__ . '/..'
 ));
