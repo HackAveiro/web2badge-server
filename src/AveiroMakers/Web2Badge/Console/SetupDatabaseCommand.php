@@ -32,7 +32,7 @@ class SetupDatabaseCommand extends \Knp\Command\Command
         // Prepare the table to store messages
         $messagesTable = $schema->createTable('messages');
         $messagesTable->addColumn('id', 'integer', array('unsigned' => true));
-        $messagesTable->addColumn('deviceID', 'string', array('length' => 2));
+        $messagesTable->addColumn('deviceCode', 'string', array('length' => 2));
         $messagesTable->addColumn('text', 'string', array('length' => 140));
         $messagesTable->addColumn('sent', 'boolean', array('default' => false));
         $messagesTable->addColumn('timestamp', 'datetime');

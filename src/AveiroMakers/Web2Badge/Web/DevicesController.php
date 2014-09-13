@@ -12,14 +12,14 @@ class DevicesController
 
         if ($device === false)
         {
-            return $app->abort('404', 'The device '.$deviceID.' was not found!');
+            return $app->abort('404', 'The device '.$deviceCode.' was not found!');
         }
         
         $now = new \DateTime();
         $timestamp = $now->format('Y-m-d H:i:s');
         $deviceId = $device['id'];
 
-        $app['db']->update('devices', ['last_seen_at' => $timestamp], ['id' => $deviceCode]);
+        $app['db']->update('devices', ['last_seen_at' => $timestamp], ['id' => $deviceId]);
 
     }
    

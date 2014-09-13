@@ -65,7 +65,7 @@ class TwitterConsumer extends \OauthPhirehose {
     {
         $now = new \DateTime();
         $newMessageData = array(
-            'deviceID' => '**', //Let's assume all tweets are for broadcasting for now
+            'deviceCode' => '**', //Let's assume all tweets are for broadcasting for now
             'text' => $text,
             'timestamp' => $now->format('Y-m-d H:i:s')
         );

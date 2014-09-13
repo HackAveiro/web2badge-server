@@ -23,7 +23,7 @@ class MessagesController
             $app['db']->executeUpdate($sql, array(1, $message['id']));
         }
 
-        return $message['deviceID'].$message['text'];        
+        return $message['deviceCode'].$message['text'];        
     }
 
     public function getAll(Application $app)
@@ -37,15 +37,15 @@ class MessagesController
     {
         $now = new \DateTime();
 
-        $deviceID = $request->get('deviceID');
+        $deviceCode = $request->get('deviceCode');
         $newMessageData = array(
-            'deviceID' => $deviceID,
+            'deviceCode' => $deviceCode,
             'text' => $request->get('text'),
             'timestamp' => $now->format('Y-m-d H:i:s')
         );
 
         $app['db']->insert('messages', $newMessageData);
         $app['session']->set('message_sent', true);
-        return $app->redirect($deviceID);
+        return $app->redirect($deviceCode);
     }
 }

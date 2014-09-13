@@ -22,7 +22,7 @@ class SendMessageCommand extends \Knp\Command\Command
             ->setName('send-message')
             ->setDescription('Sends a new message to a specific device')
             ->addArgument(
-                'deviceID',
+                'deviceCode',
                 InputArgument::REQUIRED,
                 'The two-character code that identifies the target device'
             )
@@ -37,7 +37,7 @@ class SendMessageCommand extends \Knp\Command\Command
     {
         $now = new \DateTime();
         $newMessageData = array(
-            'deviceID' => $input->getArgument('deviceID'),
+            'deviceCode' => $input->getArgument('deviceCode'),
             'text' => $input->getArgument('text'),
             'timestamp' => $now->format('Y-m-d H:i:s')
         );
