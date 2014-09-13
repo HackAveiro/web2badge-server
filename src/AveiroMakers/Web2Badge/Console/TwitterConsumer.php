@@ -11,6 +11,16 @@ class TwitterConsumer extends \OauthPhirehose {
      */
     private $output;
 
+    public function __construct($authData, $trackWords, OutputInterface $output)
+    {
+        parent::__construct($authData['oauth_token'], $authData['oauth_secret'], \Phirehose::METHOD_FILTER);
+        $this->consumerKey = $authData['consumer_key'];
+        $this->consumerSecret = $authData['consumer_secret'];
+        $this->output = $output;
+        $this->setTrack($trackWords);
+    }
+
+
     public function enqueueStatus($status) {
         $data = json_decode($status, true);
         if (is_array($data) && isset($data['user']['screen_name'])) {
@@ -22,10 +32,6 @@ class TwitterConsumer extends \OauthPhirehose {
             //For now, let's just print the messages to the console
             $this->write(print_r($newMessage, true));
         }
-    }
-
-    public function setOutputInterface(OutputInterface $output) {
-        $this->output = $output;
     }
 
     public function log($message, $level = 'notice')

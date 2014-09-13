@@ -21,9 +21,14 @@ class TwitterConsumerCommand extends \Knp\Command\Command
     {
         $output->writeln('Started Web2Badge\'s Twitter Consumer');
 
-        $sc = new TwitterConsumer(TWITTER_OAUTH_TOKEN, TWITTER_OAUTH_SECRET, \Phirehose::METHOD_FILTER);
-        $sc->setTrack(explode(';',TWITTER_FILTER));
-        $sc->setOutputInterface($output);
+        $twitterAuth = [
+            'consumer_key' => TWITTER_CONSUMER_KEY,
+            'consumer_secret' => TWITTER_CONSUMER_SECRET,
+            'oauth_token' => TWITTER_OAUTH_TOKEN,
+            'oauth_secret' => TWITTER_OAUTH_SECRET
+        ];
+        $twitterFilter = explode(';',TWITTER_FILTER);
+        $sc = new TwitterConsumer($twitterAuth, $twitterFilter, $output);
 
         $sc->consume();
     }
