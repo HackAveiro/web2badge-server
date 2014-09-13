@@ -22,21 +22,7 @@ class DevicesController
         $app['db']->update('devices', ['last_seen_at' => $timestamp], ['id' => $deviceCode]);
 
     }
-    
-    public function form(Application $app, $deviceID)
-    {
-        $app['session']->set('my_value', 'teste');
-        $team_members = $app['team_members'];
-
-        $sent = $app['session']->get('message_sent');
-        $app['session']->set('message_sent', false);
-        return $app['twig']->render('form.html', array(
-            'deviceID' => $deviceID,
-            'target' => $team_members[$deviceID],
-            'sent' => $sent
-        ));
-    }
-    
+   
     public function getAll(Application $app)
     {
         $sql = 'SELECT * FROM devices ORDER BY last_seen_at DESC';
