@@ -45,6 +45,7 @@ class SetupDatabaseCommand extends \Knp\Command\Command
         $devicesTable->addColumn('code', 'string', array('length' => 2));
         $devicesTable->addColumn('owner', 'string');
         $devicesTable->addColumn('last_seen_at', 'datetime', array('notnull' => false));
+        $devicesTable->addColumn('twitter_username', 'text', array('notnull' => false));
         $devicesTable->setPrimaryKey(['id']);
         $devicesTable->addUniqueIndex(['code']);
         

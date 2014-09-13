@@ -13,10 +13,15 @@ $app->get('messages', 'AveiroMakers\Web2Badge\Web\MessagesController::getAll');
 $app->post('messages', 'AveiroMakers\Web2Badge\Web\MessagesController::create');
 
 $app->get('{deviceCode}', 'AveiroMakers\Web2Badge\Web\MainController::form')
-    ->assert('deviceCode', '^[a-zA-Z*]{2}|all');
+    ->assert('deviceCode', '^[a-zA-Z*]{2}');
 
 $app->post('devices/{deviceCode}/ping', 'AveiroMakers\Web2Badge\Web\DevicesController::ping');
 
 $app->get('devices', 'AveiroMakers\Web2Badge\Web\DevicesController::getAll');
+
+$app->get('devices/{deviceCode}/edit', 'AveiroMakers\Web2Badge\Web\DevicesController::editForm');
+
+Request::enableHttpMethodParameterOverride();
+$app->put('devices', 'AveiroMakers\Web2Badge\Web\DevicesController::update');
 
 $app->run();

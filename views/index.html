@@ -13,7 +13,12 @@
                 <div>If you're a human you can use one of the following forms to send a message to ...
                     <ul>
                         {% for device in devices %}
-                        <li><a href="{{ device.code }}">{{ device.owner }}</a></li>
+                        <li>
+                            <a href="{{ device.code }}">{{ device.owner }}</a>
+                            {% if device.twitter_username %}
+                            <small>(<a href="https://twitter.com/{{ device.twitter_username }}">@{{ device.twitter_username }}</a>)</small>
+                            {% endif %}
+                        </li>
                         {% endfor %}
                     </ul>
                 </div>
