@@ -24,7 +24,7 @@ Install Instructions
 Using Vagrant
 -------------
 
-The simplest way to configure a server is to use Vagrant (http://vagrantup.com).
+The simplest way to configure a server is to use [Vagrant](http://vagrantup.com).
 Vagrant is a development environment manager that with a single command ("vagrant up") will start your favourite virtual machine provider (e.g. Virtualbox), download Ubuntu and configure everything this project requires
 
 Manual Install
@@ -33,19 +33,21 @@ Manual Install
 If you want to do it by hand, the main things you'll need to setup are:
   * Install Apache
   * Install PHP 5.3+
-  * Install Composer (https://getcomposer.org/)
-  * Install Redis
+  * Install [Composer](https://getcomposer.org/)
   * Setup apache virtualhost to the "web" subfolder
   * Run Composer on the project's root folder (composer update)
-
+  * Create empty database by running "bin/web2badge.php setup-database"
 
 Configuration
 -------
 
-To setup an empty database just run bin/web2badge.php setup-database
+After having the application installed, you should configure it, by creating
+a config/config.php file based on the config/config.php.dist template.
 
-You should also create a config/config.php file based on the config.php.dist template
-
+Also, if your OS supports [Upssart](http://upstart.ubuntu.com/), you can
+optionally setup the project's twitter consumer as a service by copying
+config/web2badge_twitter.conf to /etc/init/ edit it (to fix base install path dir)
+and then you can start it with "initctl start web2badge_twitter"
 
 License
 -------
