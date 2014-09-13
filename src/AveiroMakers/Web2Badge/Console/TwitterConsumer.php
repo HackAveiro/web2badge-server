@@ -11,12 +11,15 @@ class TwitterConsumer extends \OauthPhirehose {
      */
     private $output;
 
-    public function __construct($authData, $trackWords, OutputInterface $output)
+    private $database;
+    
+    public function __construct($authData, $trackWords, $database, OutputInterface $output)
     {
         parent::__construct($authData['oauth_token'], $authData['oauth_secret'], \Phirehose::METHOD_FILTER);
         $this->consumerKey = $authData['consumer_key'];
         $this->consumerSecret = $authData['consumer_secret'];
         $this->output = $output;
+        $this->database = $database;
         $this->setTrack($trackWords);
     }
 
@@ -24,13 +27,9 @@ class TwitterConsumer extends \OauthPhirehose {
     public function enqueueStatus($status) {
         $data = json_decode($status, true);
         if (is_array($data) && isset($data['user']['screen_name'])) {
-            $newMessage = [
-                'username' => $data['user']['screen_name'],
-                'text' => urldecode($data['text']),
-                'timestamp' => $data['created_at']
-            ];
-            //For now, let's just print the messages to the console
-            $this->write(print_r($newMessage, true));
+            $text = $data['user']['screen_name'] . ': ' . urldecode($data['text']);
+            $this->show($text);
+            $this->createDBMessage($text);
         }
     }
 
@@ -51,15 +50,27 @@ class TwitterConsumer extends \OauthPhirehose {
         }
     }
 
-    public function write($message)
+    public function show($text)
     {
         if (!isset($this->output)) {
-            return print $message . "\n";
+            return print $text . "\n";
         }
 
         if ($this->output->getVerbosity() >= OutputInterface::OUTPUT_NORMAL) {
-            $this->output->writeln($message);
+            $this->output->writeln($text);
         }
+    }
+    
+    public function createDBMessage($text)
+    {
+        $now = new \DateTime();
+        $newMessageData = array(
+            'deviceID' => '**', //Let's assume all tweets are for broadcasting for now
+            'text' => $text,
+            'timestamp' => $now->format('Y-m-d H:i:s')
+        );
+
+        $this->database->insert('messages', $newMessageData);
     }
 
 }

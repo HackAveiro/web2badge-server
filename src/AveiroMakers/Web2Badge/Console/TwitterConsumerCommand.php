@@ -21,6 +21,9 @@ class TwitterConsumerCommand extends \Knp\Command\Command
     {
         $output->writeln('Started Web2Badge\'s Twitter Consumer');
 
+        $silexApp = $this->getSilexApplication();
+        $database = $silexApp['db'];
+
         $twitterAuth = [
             'consumer_key' => TWITTER_CONSUMER_KEY,
             'consumer_secret' => TWITTER_CONSUMER_SECRET,
@@ -28,7 +31,7 @@ class TwitterConsumerCommand extends \Knp\Command\Command
             'oauth_secret' => TWITTER_OAUTH_SECRET
         ];
         $twitterFilter = explode(';',TWITTER_FILTER);
-        $sc = new TwitterConsumer($twitterAuth, $twitterFilter, $output);
+        $sc = new TwitterConsumer($twitterAuth, $twitterFilter, $database, $output);
 
         $sc->consume();
     }
