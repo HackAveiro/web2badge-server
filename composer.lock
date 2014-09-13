@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "82d762c2fca731d5bfa0f0f1af18b460",
+    "hash": "ba5179a13c4217f9ef5a2282152dc6f7",
     "packages": [
         {
             "name": "doctrine/common",
@@ -129,6 +129,50 @@
                 "queryobject"
             ],
             "time": "2012-04-13 07:56:12"
+        },
+        {
+            "name": "fennb/phirehose",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fennb/phirehose.git",
+                "reference": "408d78293f26c4839bec0eaf735b0ccd91ff7371"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fennb/phirehose/zipball/408d78293f26c4839bec0eaf735b0ccd91ff7371",
+                "reference": "408d78293f26c4839bec0eaf735b0ccd91ff7371",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Fenn Bailey",
+                    "homepage": "http://fennb.com/"
+                }
+            ],
+            "description": "A PHP interface to the Twitter Streaming API.",
+            "homepage": "https://github.com/fennb/phirehose",
+            "keywords": [
+                "api",
+                "phirehose",
+                "php",
+                "streaming",
+                "twitter"
+            ],
+            "time": "2014-04-22 23:13:31"
         },
         {
             "name": "knplabs/console-service-provider",
@@ -950,7 +994,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "knplabs/console-service-provider": 20
+        "knplabs/console-service-provider": 20,
+        "fennb/phirehose": 20
     },
     "prefer-stable": false,
     "platform": [

@@ -1,0 +1,12 @@
+<?php
+
+// Authentication of the registered twitter application
+define('TWITTER_CONSUMER_KEY', NULL);
+define('TWITTER_CONSUMER_SECRET', NULL);
+
+// Oauth authentication for twitter
+define('TWITTER_OAUTH_TOKEN', NULL);
+define('TWITTER_OAUTH_SECRET', NULL);
+
+// List of words to track
+define('TWITTER_FILTER', NULL);

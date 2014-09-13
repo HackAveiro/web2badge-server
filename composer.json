@@ -5,10 +5,10 @@
         "knplabs/console-service-provider": "dev-master",
         "doctrine/dbal": "2.2.*",
         "twig/twig": "1.12.*",
-        "symfony/twig-bridge": "~2.3"
+        "symfony/twig-bridge": "~2.3",
+        "fennb/phirehose": "dev-master"
     },
     "autoload": {
         "psr-0": { "": "src/" }
     }
 }
-

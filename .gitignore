@@ -2,3 +2,4 @@
 vendor/
 messages.db
 composer.phar
+config/config.php
