@@ -8,7 +8,8 @@
                 <h1>Web2Badge Server</h1>
                 <p class="lead">Welcome to Web2Badge Server.</p>
                 <p>To get a message to be transmitted, poll the <code>/messages/get_one</code></p>
-                <p>To submit a new message POST <var>deviceCode</var> and <var>text</var> to <code>/messages</code>.</p>
+                <p>To submit a keep-alive ping from a device, just submit a POST request to <code>/devices/<var>{deviceCode}</var>/ping</code>
+                <p>To submit a new message POST <var>{deviceCode}</var> and <var>{text}</var> to <code>/messages</code>.</p>
                 <div>If you're a human you can use one of the following forms to send a message to ...
                     <ul>
                         {% for device in devices %}
