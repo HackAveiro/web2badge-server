@@ -39,6 +39,13 @@ If you want to do it by hand, the main things you'll need to setup are:
   * Run Composer on the project's root folder (composer update)
 
 
+Configuration
+-------
+
+To setup an empty database just run bin/web2badge.php setup-database
+
+You should also create a config/config.php file based on the config.php.dist template
+
 
 License
 -------
