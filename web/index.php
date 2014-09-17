@@ -6,7 +6,7 @@ $app = require_once(__DIR__.'/../src/bootstrap.php');
 
 $app->get('', 'AveiroMakers\Web2Badge\Web\MainController::index');
 
-$app->get('messages/get_one', 'AveiroMakers\Web2Badge\Web\MessagesController::getOneAction');
+$app->get('messages/get_one', 'AveiroMakers\Web2Badge\Web\MessagesController::getOne');
 
 $app->get('messages', 'AveiroMakers\Web2Badge\Web\MessagesController::getAll');
 
