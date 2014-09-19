@@ -19,6 +19,13 @@ class MainController
         return $app['twig']->render('about.html');
     }
 
+    public function feed(Application $app)
+    {
+        return $app['twig']->render('feed.html', array(
+            'messages' => $app['db']->fetchAll('SELECT * FROM messages ORDER BY timestamp DESC LIMIT 10')
+        ));
+    }
+
 
     public function form(Application $app, $deviceCode)
     {

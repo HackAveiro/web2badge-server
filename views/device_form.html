@@ -2,12 +2,10 @@
 
 {% block subtitle %}Device Edit{% endblock %}
 
+{% block lead %}Edit {{ device.owner }}'s device!{% endblock %}
+
 {% block content %}
 
-            <div>
-                <h1>Web2Badge</h1>
-                <p class="lead">Edit {{ device.owner }}'s device!</p>
-            </div>
             {% if updated == true %}
             <div class="alert alert-success alert-dismissible fade in" role="alert">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>

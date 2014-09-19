@@ -8,6 +8,8 @@ $app->get('', 'AveiroMakers\Web2Badge\Web\MainController::index');
 
 $app->get('about', 'AveiroMakers\Web2Badge\Web\MainController::about');
 
+$app->get('feed', 'AveiroMakers\Web2Badge\Web\MainController::feed');
+
 $app->get('messages/get_one', 'AveiroMakers\Web2Badge\Web\MessagesController::getOne');
 
 $app->get('messages', 'AveiroMakers\Web2Badge\Web\MessagesController::getAll');

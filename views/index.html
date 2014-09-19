@@ -1,35 +1,33 @@
 {% extends "base.html" %}
 
-{% block subtitle %}Welcome{% endblock %}
+{% block subtitle %}Home{% endblock %}
+
+{% block lead %}Welcome to Web2Badge Server{% endblock %}
 
 {% block content %}
 
+            <p>If you want to know a little bit about how this works, there's an <a href="/about">About</a> page.</p>
+            <div>To send a message to one of our badges, select to who do you want to send it:
+                <ul>
+                    {% for device in devices %}
+                    <li>
+                        <a href="{{ device.code }}">{{ device.owner }}</a>
+                        {% if device.twitter_username %}
+                        <small>(<a href="https://twitter.com/{{ device.twitter_username }}">@{{ device.twitter_username }}</a>)</small>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
             <div>
-                <h1>Web2Badge Server</h1>
-                <p class="lead">Welcome to Web2Badge Server.</p>
-                <p>If you want to know a little bit about how this works, there's an <a href="/about">About</a> page.</p>
-                <div>To send a message to one of our badges, select to who do you want to send it:
-                    <ul>
-                        {% for device in devices %}
-                        <li>
-                            <a href="{{ device.code }}">{{ device.owner }}</a>
-                            {% if device.twitter_username %}
-                            <small>(<a href="https://twitter.com/{{ device.twitter_username }}">@{{ device.twitter_username }}</a>)</small>
-                            {% endif %}
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div>
-                    <p>You can also send something to everyone by including one of the following messages on a public tweet:</p>
-                    <ul>
-                        {% for tag in tags %}
-                        <li>
-                            <a href="http://twitter.com/home/?status={{ tag }}">{{ tag }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                <p>You can also send something to everyone by including one of the following messages on a public tweet:</p>
+                <ul>
+                    {% for tag in tags %}
+                    <li>
+                        <a href="http://twitter.com/home/?status={{ tag }}">{{ tag }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
 
 {% endblock %}
