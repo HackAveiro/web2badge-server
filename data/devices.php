@@ -8,5 +8,6 @@ return [
     ['code' => 'JS', 'owner' => 'Joaquim Santos'],
     ['code' => 'LF', 'owner' => 'Luis Faceira', 'twitter_username' => 'luisfaceira'],
     ['code' => 'MG', 'owner' => 'Marcos Gomes'],
-    ['code' => 'RL', 'owner' => 'Ricardo Lameiro', 'twitter_username' => 'ricardolameiro']
+    ['code' => 'RL', 'owner' => 'Ricardo Lameiro', 'twitter_username' => 'ricardolameiro'],
+    ['code' => 'SF', 'owner' => 'Sandra Fernandes']
 ];
