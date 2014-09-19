@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block subtitle %}About{% endblock %}
+
+{% block content %}
+
+            <div>
+                <h1>Web2Badge Server</h1>
+                <p class="lead">About the Project</p>
+                <p>This is the firts project of the very very recently created <a href="http://hackaveiro.org">Hack'Aveiro</a> collective!</p>
+                <p>The concept is simple: send text from our webpage or from twitter to the small lcd badges we're wearing!</p>
+                <p>Basically, it consists of the following parts:</p>
+                <ul>
+                    <li>3D Enclosure for the badge</li>
+                    <li>Electronic board and LCD to show the messages</li>
+                    <li>YUN gateway that connects to get messages from the server and relay them to the badges through R.F.</li>
+                    <li>This webserver that provides user interface, queues messages and queries twitter</li>
+                </ul>
+                
+                <div>
+                    <p>The endpoints that this server provides for the gateway are:</p>
+                    <ul>
+                        <li>GET <code>/messages/get_one</code> - Gets a message to be transmitted</li>
+                        <li>POST <code>/devices/<var>{deviceCode}</var>/ping</code> - Submit a keep-alive ping from a device</li>
+                        <li>POST <var>{deviceCode}</var> and <var>{text}</var> to <code>/messages</code> - Submit a new message</li>
+                    </ul>
+                </div>
+            </div>
+
+{% endblock %}

@@ -9,10 +9,17 @@ class MainController
     public function index(Application $app)
     {
         return $app['twig']->render('index.html', array(
-            'devices' => $app['db']->fetchAll('SELECT * FROM devices')
+            'devices' => $app['db']->fetchAll('SELECT * FROM devices'),
+            'tags' => explode(';',TWITTER_FILTER)
         ));        
     }
-    
+
+    public function about(Application $app)
+    {
+        return $app['twig']->render('about.html');
+    }
+
+
     public function form(Application $app, $deviceCode)
     {
         $device = $app['db']->fetchAssoc('SELECT * FROM devices WHERE code = ?', [$deviceCode]);

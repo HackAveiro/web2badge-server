@@ -7,10 +7,8 @@
             <div>
                 <h1>Web2Badge Server</h1>
                 <p class="lead">Welcome to Web2Badge Server.</p>
-                <p>To get a message to be transmitted, poll the <code>/messages/get_one</code></p>
-                <p>To submit a keep-alive ping from a device, just submit a POST request to <code>/devices/<var>{deviceCode}</var>/ping</code>
-                <p>To submit a new message POST <var>{deviceCode}</var> and <var>{text}</var> to <code>/messages</code>.</p>
-                <div>If you're a human you can use one of the following forms to send a message to ...
+                <p>If you want to know a little bit about how this works, there's an <a href="/about">About</a> page.</p>
+                <div>To send a message to one of our badges, select to who do you want to send it:
                     <ul>
                         {% for device in devices %}
                         <li>
@@ -18,6 +16,16 @@
                             {% if device.twitter_username %}
                             <small>(<a href="https://twitter.com/{{ device.twitter_username }}">@{{ device.twitter_username }}</a>)</small>
                             {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <p>You can also send something to everyone by including one of the following messages on a public tweet:</p>
+                    <ul>
+                        {% for tag in tags %}
+                        <li>
+                            <a href="http://twitter.com/home/?status={{ tag }}">{{ tag }}</a>
                         </li>
                         {% endfor %}
                     </ul>
