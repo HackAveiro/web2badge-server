@@ -16,7 +16,7 @@
     </thead>
     {% for message in messages %}
     <tr>
-        <td>{{ message.deviceCode }}</td>
+        <td><a href="/{{ message.deviceCode }}">{{ message.deviceCode }}</a></td>
         <td>{{ message.text }}</td>
         <td>{{ message.timestamp }}</td>
         <td>
