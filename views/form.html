@@ -11,10 +11,12 @@
             {% if sent == true %}
             <div class="alert alert-success alert-dismissible fade in" role="alert">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                Message sent successfully
+                Message sent successfully, check {{ target }}'s badge now!
             </div>
             {% endif %}
-
+            <p>
+                By doing this, you'll send a message from <strong>Web 2 Badge</strong>. It will appear in {{ target }}'s electronic badge, through a gateway transmitting RF to badges across the faire.
+            </p>
             <div>
                 <form role="form" action="/messages" method="POST">
                     <div class="form-group">
