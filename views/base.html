@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Web2Badge - {% block subtitle %}{% endblock %}</title>
+        <title>Web2Badge</title>
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -25,17 +25,13 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+        {% include "navbar.html" %}
+        
         <div class="container-fluid">
-
-        <div>
-           <h1>Web2Badge</h1>
            <p class="lead">{% block lead %}{% endblock %}</p>
-        </div>
 
-        {% block content %}{% endblock %}
+            {% block content %}{% endblock %}
 
-        <p /><p />
-        <small><a href="/">Home</a></small> | <small><a href="/about">About</a></small> | <small><a href="/feed">Feed</a></small>
         </div><!-- /.container -->
 
     </body>
