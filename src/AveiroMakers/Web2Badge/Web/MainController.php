@@ -22,7 +22,7 @@ class MainController
     public function feed(Application $app)
     {
         return $app['twig']->render('feed.html', array(
-            'messages' => $app['db']->fetchAll('SELECT * FROM messages ORDER BY timestamp DESC LIMIT 10')
+            'messages' => $app['db']->fetchAll('SELECT * FROM messages ORDER BY timestamp DESC LIMIT 20')
         ));
     }
 
