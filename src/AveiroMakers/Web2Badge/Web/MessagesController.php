@@ -4,6 +4,7 @@ namespace AveiroMakers\Web2Badge\Web;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use AveiroMakers\Web2Badge\Util\StringCleaner;
 
 class MessagesController
 {
@@ -23,7 +24,7 @@ class MessagesController
             $app['db']->executeUpdate($sql, array(1, $message['id']));
         }
 
-        return $message['deviceCode'].$message['text'];        
+        return $message['deviceCode'].StringCleaner::clean($message['text']);
     }
 
     public function getAll(Application $app)
