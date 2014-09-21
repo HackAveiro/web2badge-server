@@ -24,7 +24,7 @@ class MessagesController
             $app['db']->executeUpdate($sql, array(1, $message['id']));
         }
 
-        return $message['deviceCode'].StringCleaner::clean($message['text']);
+        return $message['deviceCode'].'*'.StringCleaner::clean($message['text']);
     }
 
     public function getAll(Application $app)
