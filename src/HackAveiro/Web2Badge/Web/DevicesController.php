@@ -1,6 +1,6 @@
 <?php
 
-namespace AveiroMakers\Web2Badge\Web;
+namespace HackAveiro\Web2Badge\Web;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace AveiroMakers\Web2Badge\Util;
+namespace HackAveiro\Web2Badge\Util;
 
 class StringCleaner
 {

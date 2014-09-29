@@ -1,6 +1,6 @@
 <?php
 
-namespace AveiroMakers\Web2Badge\Console;
+namespace HackAveiro\Web2Badge\Console;
 
 use Symfony\Component\Console\Output\OutputInterface;
 

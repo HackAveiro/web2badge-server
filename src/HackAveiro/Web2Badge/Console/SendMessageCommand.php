@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace AveiroMakers\Web2Badge\Console;
+namespace HackAveiro\Web2Badge\Console;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

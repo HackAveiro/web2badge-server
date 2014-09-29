@@ -1,10 +1,10 @@
 <?php
 
-namespace AveiroMakers\Web2Badge\Web;
+namespace HackAveiro\Web2Badge\Web;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use AveiroMakers\Web2Badge\Util\StringCleaner;
+use HackAveiro\Web2Badge\Util\StringCleaner;
 
 class MessagesController
 {
