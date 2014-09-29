@@ -9,5 +9,6 @@ return [
     ['code' => 'LF', 'owner' => 'Luis Faceira', 'twitter_username' => 'luisfaceira'],
     ['code' => 'MG', 'owner' => 'Marcos Gomes'],
     ['code' => 'RL', 'owner' => 'Ricardo Lameiro', 'twitter_username' => 'ricardolameiro'],
-    ['code' => 'SF', 'owner' => 'Sandra Fernandes']
+    ['code' => 'SF', 'owner' => 'Sandra Fernandes'],
+    ['code' => '++', 'owner' => 'Admin Codes']
 ];
